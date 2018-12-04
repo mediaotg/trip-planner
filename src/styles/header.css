@@ -1,0 +1,19 @@
+.page-header {
+    background: #166e71;
+    padding: 24px;
+    box-shadow: 0 0 10px #000000;
+}
+.page-header .wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: none;
+}
+.page-header .menu .link.circle {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background: rgba(255, 255, 255, .2);
+}
+.page-header .brand h1 {
+    color: #c7e8df;
+}

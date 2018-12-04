@@ -1,0 +1,156 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-family: 'Hind Madurai', sans-serif;
+    text-align: left;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.wrapper {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Text */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #062537;
+    font-size: 1em;
+}
+h5 {
+    font-family: 'Hind Madurai', sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+}
+a {
+    text-decoration: none;
+}
+
+/* Links */
+.link {
+    padding: 12px 24px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+.link:hover {
+    background: rgba(178, 220, 208, .25);
+}
+.link.light {
+    color: #c7e8df;
+}
+.link.circle {
+    padding: 0;
+    border-radius: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form Elements */
+label {
+    font-family: 'Hind Madurai', sans-serif;
+    font-size: 18px;
+    text-align: left;
+    color: #b2dcd1;
+}
+input {
+    padding: 12px;
+    background: rgba(178, 220, 209, .5); 
+    border: none;
+    display: block;
+}
+
+.button {
+    background: #b2dcd1;
+    font-family: 'Montserrat', sans-serif;
+    color: #062537;
+    text-transform: uppercase;
+}
+
+/* Cards */
+.card-wrapper {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: 48px auto;
+}
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    min-height: 400px;
+    max-width: 400px;
+    margin: 12px;
+    background: #ffffff;
+}
+@media(max-width: 1000px) {
+    .card-wrapper {
+        grid-template-columns: auto auto;
+        justify-content: space-around;
+    }
+}
+@media(max-width: 600px) {
+    .card-wrapper {
+        grid-template-columns: auto;
+        position: relative;
+        top: 36px;
+    }
+}
+
+/* Search Cards */
+.search-wrapper .card-wrapper {
+    display: block;
+    width: 420px;
+    height: calc(100vh - 270px);
+    margin: 0;
+    position: fixed;
+    overflow: scroll;
+    top: 270px;
+}
+@media(max-width: 600px) {
+    .search-wrapper .card-wrapper {
+        width: 100%;
+    }
+    .search-wrapper .card {
+        max-width: none;
+    }
+}
+
+.google-map {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+}
+
+/* Map */
+.map-wrapper{
+    width: calc(100vw - 420px);
+    height: calc(100vh - 80px);
+    position: absolute;
+    top: 80px;
+    right: 0;
+}
+@media(max-width: 600px) {
+    .map-wrapper {
+        display: none;   
+    }
+}
