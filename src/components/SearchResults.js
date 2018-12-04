@@ -12,50 +12,54 @@ class SearchResults extends React.Component {
     }
     search() {
         this.setState({searching: true});
+        var selector = this;
         navigator.geolocation.getCurrentPosition(
             position => {
-
-                this.setState({
-                    location: {
-                        userLat: position.coords.latitude, 
-                        userLng: position.coords.longitude,
-                        loading: false                        
-                    }
-                });
-
-                var search = this.props.search.data;
-                var url = 'http://estyrosenberg.com/trip-planner/api.php?action=search&transport='+search.transport+'&age='+search.age+'&lat='+position.coords.latitude+'&lng='+position.coords.longitude+'&distance='+search.distance;
-                fetch(url)
-                .then(results => {
-                    return results.json();
-                }).then(data => {
-                    console.log(data);
-                    if(data.status_message == 'Trips Found'){
-                        let trips = data.data.map((trip, i) => {
-                            return (
-                                <Card value={trip} key={i} />
-                            )
-                        });
-                        this.setState({trips: trips});
-                        this.setState({tripData: data.data});
-                    } else {
-                        console.log('no responses');
-                        this.setState({trips: []});
-                    }
-                    this.setState({searching: false});
-                });
-                console.log(this.state.userLocation);
+                var location = {lat: position.coords.latitude, lng: position.coords.longitude};
+                this.getData(location);
+            },
+            function(error){
+                if(error.code == 1){
+                    var location = {lat: 40.692136, lng: -73.942586};
+                    selector.getData(location);    
+                }
             },
             () => {
                 this.setState ({ loading: false })
-            },
-            function (error) {
-                if (error.code == error.PERMISSION_DENIED)
-                    console.log("You denied me :-(");
             }
         )
     }
-    getData() {
+    getData(location) {
+        this.setState({
+            location: {
+                userLat: location.lat, 
+                userLng: location.lng,
+                loading: false                        
+            }
+        });
+
+        var search = this.props.search.data;
+        var url = 'http://estyrosenberg.com/trip-planner/api.php?action=search&transport='+search.transport+'&age='+search.age+'&lat='+location.lat+'&lng='+location.lng+'&distance='+search.distance;
+        fetch(url)
+        .then(results => {
+            return results.json();
+        }).then(data => {
+            console.log(data);
+            if(data.status_message == 'Trips Found'){
+                let trips = data.data.map((trip, i) => {
+                    return (
+                        <Card value={trip} key={i} />
+                    )
+                });
+                this.setState({trips: trips});
+                this.setState({tripData: data.data});
+            } else {
+                console.log('no responses');
+                this.setState({trips: []});
+            }
+            this.setState({searching: false});
+        });
+        console.log(this.state.userLocation);
     }
     componentDidMount() {
         this.search();
