@@ -48,6 +48,10 @@ class SearchResults extends React.Component {
             },
             () => {
                 this.setState ({ loading: false })
+            },
+            function (error) {
+                if (error.code == error.PERMISSION_DENIED)
+                    console.log("You denied me :-(");
             }
         )
     }
