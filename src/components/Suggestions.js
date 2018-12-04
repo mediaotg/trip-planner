@@ -9,7 +9,7 @@ class Suggestions extends React.Component {
         this.state = {trips: [], list: []}
     }
     componentDidMount() {
-        fetch('http://localhost:8888/trip-planner/api.php?action=featured')
+        fetch('http://estyrosenberg.com/trip-planner/api.php?action=featured')
         .then(results => {
             return results.json();
         }).then(data => {

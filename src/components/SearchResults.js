@@ -24,7 +24,7 @@ class SearchResults extends React.Component {
                 });
 
                 var search = this.props.search.data;
-                var url = 'http://localhost:8888/trip-planner/api.php?action=search&transport='+search.transport+'&age='+search.age+'&lat='+position.coords.latitude+'&lng='+position.coords.longitude+'&distance='+search.distance;
+                var url = 'http://estyrosenberg.com/trip-planner/api.php?action=search&transport='+search.transport+'&age='+search.age+'&lat='+position.coords.latitude+'&lng='+position.coords.longitude+'&distance='+search.distance;
                 fetch(url)
                 .then(results => {
                     return results.json();
